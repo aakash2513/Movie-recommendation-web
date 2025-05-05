@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flicks&Tunes</title>
+    <link rel="stylesheet" href="style.css">    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+
+         nav {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 5% 8px 5%;
+            background: #171717;
+        }
+
+         nav .logo h1 {
+            width: max-content;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+         nav .logo h1 span {
+            color: #ffe100;
+            margin-left: 8px;
+            text-decoration: underline;
+        }
+
+        .right {
+            width: fit-content;
+        }
+
+         nav .right ul {
+            list-style: none;
+        }
+
+         nav .right ul li {
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+            nav .right ul li a {
+                color: #fff;
+                text-decoration: none;
+                transition: 0.4s;
+            }
+
+       nav .right ul li a:hover {
+            color: #ffe100;
+        }
+
+        .newsletter {
+            height: auto;
+            padding: 0 0 40px 0;
+            background-color: #171717;
+        }
+
+        .newsletter h1 {
+            text-align: center;
+            color: #ffe100;
+        }
+
+        .newsletter .news_card {
+            max-width: 350px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .newsletter .news_card input {
+            width: 550px;
+            height: 55px;
+            margin-top: 20px;
+            border-radius: 35px;
+            border: 3px solid #ffe100;
+            padding: 0 10px;
+            outline: none;
+            background: none;
+            color: #cccccc;
+        }
+
+        .newsletter .news_card button {
+            position: absolute;
+            right: 0;
+            width: 100px;
+            height: 45px;
+            border-radius: 25px;
+            margin-top: 20px;
+            margin-right: 8px;
+            border: 0;
+            outline: none;
+            background-color: #ffe100;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+
+        
+        .second {
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            padding-bottom: 25px;
+            background: #171717;
+        }
+
+        .second .latest {
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        .second .latest h1 {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .second .latest .box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .second .latest .box .card {
+            width: 250px;
+            height: 370px;
+            margin: 10px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .second .latest .box .card .details {
+            width: 250px;
+            height: 370px;
+            overflow: hidden;
+            position: absolute;
+            border-radius: 8px;
+            transition: 0.3s;
+            opacity: 0;
+        }
+
+        .second .latest .box .card:hover .details {
+            opacity: 1;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.7));
+        }
+
+        .second .latest .box .card .details .left {
+            position: absolute;
+            bottom: 0;
+            color: #fff;
+            transform: translateX(-100px);
+            transition: 0.4s;
+            opacity: 0;
+        }
+
+        .second .latest .box .card:hover .details .left {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .second .latest .box .card .details .left p.name {
+            width: 100%;
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        .second .latest .box .card .details .left .date_quality {
+            display: flex;
+            align-items: center;
+        }
+
+        .second .latest .box .card .details .left .date_quality p.quality {
+            width: 30px;
+            font-size: 13px;
+            background: #ffe100;
+            color: #282931;
+            margin-left: 10px;
+            margin-bottom: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .second .latest .box .card .details .left .date_quality p.date {
+            color: #fff;
+            font-size: 15px;
+            font-weight: bold;
+            text-align: left;
+            margin-left: 10px;
+            margin-bottom: 8px;
+        }
+
+        .second .latest .box .card .details .left p.category {
+            margin-left: 10px;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .second .latest .box .card .details .left .info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .second .latest .box .card .details .left .info .rate {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .second .latest .box .card .details .left .info .rate i {
+            font-size: 12px;
+            color: #ffd500;
+            margin-right: 5px;
+        }
+
+        .second .latest .box .card .details .left .info .rate p {
+            font-size: 12px;
+        }
+
+        .second .latest .box .card .details .left .info .time {
+            display: flex;
+            align-items: center;
+        }
+
+        .second .latest .box .card .details .left .info .time i {
+            font-size: 12px;
+            color: #ffd500;
+            margin-left: 5px;
+        }
+
+        .second .latest .box .card .details .left .info .time p {
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        .second .latest .box .card .details .right {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            color: #fff;
+            transform: translateX(100px);
+            transition: 0.4s;
+            opacity: 0;
+        }
+
+        .second .latest .box .card:hover .details .right {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .second .latest .box .card .details .right i {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #ffe100;
+            border-radius: 50%;
+            cursor: pointer;
+            color: #282931;
+            margin: 0 10px 8px 0;
+        }
+
+        .second .latest .box .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+
+
+
+        /*---------*/
+
+        .upcoming {
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            padding-bottom: 25px;
+            background-color: #171717;
+        }
+
+        .upcoming .movies_box {
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        .upcoming .movies_box h1 {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .upcoming .movies_box .box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .upcoming .movies_box .box .card {
+            width: 250px;
+            height: 370px;
+            margin: 10px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .upcoming .movies_box .box .card .details {
+            width: 250px;
+            height: 370px;
+            overflow: hidden;
+            position: absolute;
+            border-radius: 8px;
+            transition: 0.3s;
+            opacity: 0;
+        }
+
+        .upcoming .movies_box .box .card:hover .details {
+            opacity: 1;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.7));
+        }
+
+        .upcoming .movies_box .box .card .details .left {
+            position: absolute;
+            bottom: 0;
+            color: #fff;
+            transform: translateX(-100px);
+            transition: 0.4s;
+            opacity: 0;
+        }
+
+        .upcoming .movies_box .box .card:hover .details .left {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .upcoming .movies_box .box .card .details .left p.name {
+            width: 100%;
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        .upcoming .movies_box .box .card .details .left .date_quality {
+            display: flex;
+            align-items: center;
+        }
+
+        .upcoming .movies_box .box .card .details .left .date_quality p.quality {
+            width: 30px;
+            font-size: 13px;
+            background: #ffe100;
+            color: #282931;
+            margin-left: 10px;
+            margin-bottom: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .upcoming .movies_box .box .card .details .left .date_quality p.date {
+            color: #fff;
+            font-size: 15px;
+            font-weight: bold;
+            text-align: left;
+            margin-left: 10px;
+            margin-bottom: 8px;
+        }
+
+        .upcoming .movies_box .box .card .details .left p.category {
+            margin-left: 10px;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .upcoming .movies_box .box .card .details .left .info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .upcoming .movies_box .box .card .details .left .info .time {
+            display: flex;
+            align-items: center;
+        }
+
+        .upcoming .movies_box .box .card .details .left .info .time i {
+            font-size: 12px;
+            color: #ffd500;
+            margin-left: 5px;
+        }
+
+        .upcoming .movies_box .box .card .details .left .info .time p {
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        .upcoming .movies_box .box .card .details .right {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            color: #fff;
+            transform: translateX(100px);
+            transition: 0.4s;
+            opacity: 0;
+        }
+
+        .upcoming .movies_box .box .card:hover .details .right {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .upcoming .movies_box .box .card .details .right i {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #ffe100;
+            border-radius: 50%;
+            cursor: pointer;
+            color: #282931;
+            margin: 0 10px 8px 0;
+        }
+
+        .upcoming .movies_box .box .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+
+
+
+        /*----------*/
+
+        .show {
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            padding-bottom: 25px;
+            background-color: #171717;
+        }
+
+        .show .tv_show {
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        .show .tv_show h1 {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .show .tv_show .box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .show .tv_show .box .card {
+            width: 250px;
+            height: 370px;
+            margin: 10px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .show .tv_show .box .card .details {
+            width: 250px;
+            height: 370px;
+            overflow: hidden;
+            position: absolute;
+            border-radius: 8px;
+            transition: 0.3s;
+            opacity: 0;
+        }
+
+        .show .tv_show .box .card:hover .details {
+            opacity: 1;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.7));
+        }
+
+        .show .tv_show .box .card .details .left {
+            position: absolute;
+            bottom: 0;
+            color: #fff;
+            transform: translateX(-100px);
+            transition: 0.4s;
+            opacity: 0;
+        }
+
+        .show .tv_show .box .card:hover .details .left {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .show .tv_show .box .card .details .left p.name {
+            width: 100%;
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        .show .tv_show .box .card .details .left .date_quality {
+            display: flex;
+            align-items: center;
+        }
+
+        .show .tv_show .box .card .details .left .date_quality p.quality {
+            width: 30px;
+            font-size: 13px;
+            background: #ffe100;
+            color: #282931;
+            margin-left: 10px;
+            margin-bottom: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .show .tv_show .box .card .details .left .date_quality p.date {
+            color: #fff;
+            font-size: 15px;
+            font-weight: bold;
+            text-align: left;
+            margin-left: 10px;
+            margin-bottom: 8px;
+        }
+
+        .show .tv_show .box .card .details .left p.category {
+            margin-left: 10px;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .show .tv_show .box .card .details .left .info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .show .tv_show .box .card .details .left .info .rate {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .show .tv_show .box .card .details .left .info .rate i {
+            font-size: 12px;
+            color: #ffd500;
+            margin-right: 5px;
+        }
+
+        .show .tv_show .box .card .details .left .info .rate p {
+            font-size: 12px;
+        }
+
+        .show .tv_show .box .card .details .left .info .time {
+            display: flex;
+            align-items: center;
+        }
+
+        .show .tv_show .box .card .details .left .info .time i {
+            font-size: 12px;
+            color: #ffd500;
+            margin-left: 5px;
+        }
+
+        .show .tv_show .box .card .details .left .info .time p {
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        .show .tv_show .box .card .details .right {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            color: #fff;
+            transform: translateX(100px);
+            transition: 0.4s;
+            opacity: 0;
+        }
+
+        .show .tv_show .box .card:hover .details .right {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .show .tv_show .box .card .details .right i {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #ffe100;
+            border-radius: 50%;
+            cursor: pointer;
+            color: #282931;
+            margin: 0 10px 8px 0;
+        }
+
+        .show .tv_show .box .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+
+
+        .show1 {
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            padding-bottom: 25px;
+            background-color: #171717;
+        }
+
+        .show1 .tv_show1 {
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        .show1 .tv_show1 h1 {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .show1 .tv_show1 .box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .show1 .tv_show1 .box .card {
+            width: 250px;
+            height: 370px;
+            margin: 10px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .show1 .tv_show1 .box .card .details {
+            width: 250px;
+            height: 370px;
+            overflow: hidden;
+            position: absolute;
+            border-radius: 8px;
+            transition: 0.3s;
+            opacity: 0;
+        }
+
+        .show1 .tv_show1 .box .card:hover .details {
+            opacity: 1;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.7));
+        }
+
+        .show1 .tv_show1 .box .card .details .left {
+            position: absolute;
+            bottom: 0;
+            color: #fff;
+            transform: translateX(-100px);
+            transition: 0.4s;
+            opacity: 0;
+        }
+
+        .show1 .tv_show1 .box .card:hover .details .left {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .show1 .tv_show1 .box .card .details .left p.name {
+            width: 100%;
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        .show1 .tv_show1 .box .card .details .left .date_quality {
+            display: flex;
+            align-items: center;
+        }
+
+        .show1 .tv_show1 .box .card .details .left .date_quality p.quality {
+            width: 30px;
+            font-size: 13px;
+            background: #ffe100;
+            color: #282931;
+            margin-left: 10px;
+            margin-bottom: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .show1 .tv_show1 .box .card .details .left .date_quality p.date {
+            color: #fff;
+            font-size: 15px;
+            font-weight: bold;
+            text-align: left;
+            margin-left: 10px;
+            margin-bottom: 8px;
+        }
+
+        .show1 .tv_show1 .box .card .details .left p.category {
+            margin-left: 10px;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .show1 .tv_show1 .box .card .details .left .info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .show1 .tv_show1 .box .card .details .left .info .rate {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .show1 .tv_show1 .box .card .details .left .info .rate i {
+            font-size: 12px;
+            color: #ffd500;
+            margin-right: 5px;
+        }
+
+        .show1 .tv_show1 .box .card .details .left .info .rate p {
+            font-size: 12px;
+        }
+
+        .show1 .tv_show1 .box .card .details .left .info .time {
+            display: flex;
+            align-items: center;
+        }
+
+        .show1 .tv_show1 .box .card .details .left .info .time i {
+            font-size: 12px;
+            color: #ffd500;
+            margin-left: 5px;
+        }
+
+        .show1 .tv_show1 .box .card .details .left .info .time p {
+            font-size: 12px;
+            margin-left: 5px;
+        }
+
+        .show1 .tv_show1 .box .card .details .right {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            color: #fff;
+            transform: translateX(100px);
+            transition: 0.4s;
+            opacity: 0;
+        }
+
+        .show1 .tv_show1 .box .card:hover .details .right {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .show1 .tv_show1 .box .card .details .right i {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+            text-align: center;
+            background-color: #ffe100;
+            border-radius: 50%;
+            cursor: pointer;
+            color: #282931;
+            margin: 0 10px 8px 0;
+        }
+
+        .show1 .tv_show1 .box .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <nav>
+
+        <div class="logo">
+            <h1>Flicks &<span>Tunes</span></h1>
+        </div>
+
+        </div>
+
+
+        <div class="right">
+
+            <ul>
+
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Search bar.html">search</a></li>
+                <li><a href="#">Movies</a></li>
+                <li><a href="Categories.html">Categories</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+
+        </div>
+
+
+    </nav>
+
+
+
+    <div class="second">
+
+        <div class="latest"><br>
+
+
+
+            <h1>Maay Marathi</h1>
+
+            <div class="box">
+
+                <div class="card">
+
+                    <div class="details">
+
+                        <div class="left">
+
+                            <p class="name">Maharashtra Shahir (महाराष्ट्र शाहीर)</p>
+                            <div class="date_quality">
+                                <p class="quality">HD</p>
+                                <p class="date">2023</p>
+                            </div>
+                            <p class="category">Drama</p>
+
+                            <div class="info">
+
+                                <div class="rate">
+                                    <i class="fa-solid fa-star"></i>
+                                    <p>9.2</p>
+                                </div>
+                                <div class="time">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>143min</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="right">
+                                <a href="https://www.youtube.com/watch?v=RD_drMIqFwM?si=KzkcY38NQOubiZ73" target="_blank" class="play-button">
+                                    <i class="fa-solid fa-play"></i>
+                                </a>
+
+
+                        </div>
+
+                    </div>
+
+                    <img src="C:\Users\vilas dalvi\Desktop\tyb81\image\maharastra shahir.jpg">
+
+                </div>
+
+                <div class="card">
+
+                    <div class="details">
+
+                        <div class="left">
+
+                            <p class="name">Subhedar</p>
+                            <div class="date_quality">
+                                <p class="quality">HD</p>
+                                <p class="date">2023</p>
+                            </div>
+                            <p class="category">Action/Drama</p>
+
+                            <div class="info">
+
+                                <div class="rate">
+                                    <i class="fa-solid fa-star"></i>
+                                    <p>8.1</p>
+                                </div>
+                                <div class="time">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>143min</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="right">
+                            <a href="https://www.youtube.com/watch?v=DTfh9TP7zIs?si=C5RwHx_0J8ynC0LL" target="_blank" class="play-button">
+                                <i class="fa-solid fa-play"></i>
+                            </a>
+
+
+                    </div>
+
+
+                        
+
+                    </div>
+
+                    <img src="C:\Users\vilas dalvi\Desktop\tyb81\image\Subhedar.jpg">
+
+                </div>
+
+                <div class="card">
+
+                    <div class="details">
+
+                        <div class="left">
+
+                            <p class="name">Mulshi Pattern</p>
+                            <div class="date_quality">
+                                <p class="quality">HD</p>
+                                <p class="date">2018</p>
+                            </div>
+                            <p class="category">Action/Crime</p>
+
+                            <div class="info">
+
+                                <div class="rate">
+                                    <i class="fa-solid fa-star"></i>
+                                    <p>8.2</p>
+                                </div>
+                                <div class="time">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>144min</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="right">
+                            <a href="https://www.youtube.com/watch?v=vLh_lgSm7vg?si=RMcwcd5XSQcGRmIP" target="_blank" class="play-button">
+                                <i class="fa-solid fa-play"></i>
+                            </a>
+                         </div>
+
+                    </div>
+
+                    <img src="C:\Users\vilas dalvi\Desktop\tyb81\image\mulshi-pattern.jpg">
+
+                </div>
+
+                <div class="card">
+
+                    <div class="details">
+
+                        <div class="left">
+
+                            <p class="name">Ani... Dr. Kashinath Ghanekar</p>
+                            <div class="date_quality">
+                                <p class="quality">HD</p>
+                                <p class="date">2018</p>
+                            </div>
+                            <p class="category">Drama</p>
+
+                            <div class="info">
+
+                                <div class="rate">
+                                    <i class="fa-solid fa-star"></i>
+                                    <p>8.3</p>
+                                </div>
+                                <div class="time">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>150min</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="right">
+
+                            <i class="fa-solid fa-play"></i>
+
+                        </div>
+
+                    </div>
+
+                    <img src="C:\Users\vilas dalvi\Desktop\tyb81\image\Ani..._Dr._Kashinath_Ghanekar.jpg">
+
+                </div>
+
+                <div class="card">
+
+                    <div class="details">
+
+                        <div class="left">
+
+                            <p class="name">Jhimma</p>
+                            <div class="date_quality">
+                                <p class="quality">HD</p>
+                                <p class="date">2021</p>
+                            </div>
+                            <p class="category">Thriller/Drama</p>
+
+                            <div class="info">
+
+                                <div class="rate">
+                                    <i class="fa-solid fa-star"></i>
+                                    <p>7.5</p>
+                                </div>
+                                <div class="time">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>130min</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="right">
+
+                            <i class="fa-solid fa-play"></i>
+
+                        </div>
+
+                    </div>
+
+                    <img src="C:\Users\vilas dalvi\Desktop\tyb81\image\zhimma.jpg">
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <div class="upcoming">
+
+        <div class="movies_box">
+
+            <h1>Trending Bollywood</h1>
+
+            <div class="box">
+
+                <div class="card">
+
+                    <div class="details">
+
+                        <div class="left">
+
+                            <p class="name">Animal</p>
+                            <div class="date_quality">
+                                <p class="quality">HD</p>
+                                <p class="date">2023</p>
+                            </div>
+                            <p class="category">Action/Crime</p>
+
+                            <div class="info">
+
+                                <div class="time">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>201min</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="right">
+
+                            <i class="fa-solid fa-play"></i>
+
+                        </div>
+
+                    </div>
+
+                    <img src="C:\Users\vilas dalvi\Desktop\tyb81\image\Animal.jpg">
+
+                </div>
+
+                <div class="card">
+
+                    <div class="details">
+
+                        <div class="left">
+
+                            <p class="name">Sam Bahadur</p>
+                            <div class="date_quality">
+                                <p class="quality">HD</p>
+                                <p class="date">2023</p>
+                            </div>
+                            <p class="category">War/Action</p>
+
+                            <div class="info">
+
+                                <div class="time">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>149min</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="right">
+
+                            <i class="fa-solid fa-play"></i>
+
+                        </div>
+
+                    </div>
+
+                    <img src="C:\Users\vilas dalvi\Desktop\tyb81\image\sam bahadur.jpg">
+
+                </div>
+
+                <div class="card">
+
+                    <div class="details">
+
+                        <div class="left">
+
+                            <p class="name">Pathaan</p>
+                            <div class="date_quality">
+                                <p class="quality">HD</p>
+                                <p class="date">2023</p>
+                            </div>
+                            <p class="category">Action/Thriller</p>
+
+                            <div class="info">
+
+                                <div class="time">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>146min</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="right">
+
+                            <i class="fa-solid fa-play"></i>
+
+                        </div>
+
+                    </div>
+
+                    <img src="C:\Users\vilas dalvi\Desktop\tyb81\image\Pathaan.jpg">
+
+                </div>
+
+                <div class="card">
+
+                    <div class="details">
+
+                        <div class="left">
+
+                            <p class="name">12th Fail</p>
+                            <div class="date_quality">
+                                <p class="quality">HD</p>
+                                <p class="date">2023</p>
+                            </div>
+                            <p class="category">Drama</p>
+
+                            <div class="info">
+
+                                <div class="time">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>146min</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="right">
+
+                            <i class="fa-solid fa-play"></i>
+
+                        </div>
+
+                    </div>
+
+                    <img src="C:\Users\vilas dalvi\Desktop\tyb81\image\12th_Fail.jpeg">
+
+                </div>
+
+                <div class="card">
+
+                    <div class="details">
+
+                        <div class="left">
+
+                            <p class="name">Rocky Aur Rani Kii Prem Kahaani</p>
+                            <div class="date_quality">
+                                <p class="quality">HD</p>
+                                <p class="date">2023</p>
+                            </div>
+                            <p class="category">Romance/Comedy</p>
+
+                            <div class="info">
+
+                                <div class="time">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>169min</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="right">
+
+                            <i class="fa-solid fa-play"></i>
+
+                        </div>
+
+                    </div>
+
+                    <img src="C:\Users\vilas dalvi\Desktop\tyb81\image\Rocky_Aur_Rani_Ki_Prem_Kahani.jpg">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <div class="show">
+
+        <div class="tv_show">
+
+            <h1>South Dhamaka</h1>
+
+            <div class="box">
+
+                <div class="card">
+
+                    <div class="details">
+
+                        <div class="left">
+
+                            <p class="name">Leo (லியோ)</p>
+                            <div class="date_quality">
+                                <p class="quality">HD</p>
+                                <p class="date">2023</p>
+                            </div>
+                            <p class="category">Action/Crime</p>
+
+                            <div class="info">
+
+                                <div class="rate">
+                                    <i class="fa-solid fa-star"></i>
+                                    <p>7.2</p>
+                                </div>
+                                <div class="time">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>164min</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="right">
+
+                            <i class="fa-solid fa-play"></i>
+
+                        </div>
+
+                    </div>
+
+                    <img src="C:\Users\vilas dalvi\Desktop\tyb81\image\leo.webp">
+
+                </div>
+
+                <div class="card">
+
+                    <div class="details">
+
+                        <div class="left">
+
+                            <p class="name">Jailer</p>
+                            <div class="date_quality">
+                                <p class="quality">HD</p>
+                                <p class="date">2023</p>
+                            </div>
+                            <p class="category">Action/Comedy</p>
+
+                            <div class="info">
+
+                                <div class="rate">
+                                    <i class="fa-solid fa-star"></i>
+                                    <p>7.1</p>
+                                </div>
+                                <div class="time">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>168min</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="right">
+
+                            <i class="fa-solid fa-play"></i>
+
+                        </div>
+
+                    </div>
+
+                    <img src="C:\Users\vilas dalvi\Desktop\tyb81\image\Jailer.jpg">
+
+                </div>
+
+                <div class="card">
+
+                    <div class="details">
+
+                        <div class="left">
+
+                            <p class="name">Virupaksha</p>
+                            <div class="date_quality">
+                                <p class="quality">HD</p>
+                                <p class="date">2023</p>
+                            </div>
+                            <p class="category">Mystery/Horror</p>
+
+                            <div class="info">
+
+                                <div class="rate">
+                                    <i class="fa-solid fa-star"></i>
+                                    <p>7.2</p>
+                                </div>
+                                <div class="time">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>146min</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="right">
+
+                            <i class="fa-solid fa-play"></i>
+
+                        </div>
+
+                    </div>
+
+                    <img src="C:\Users\vilas dalvi\Desktop\tyb81\image\virupaksha.jpg">
+
+                </div>
+
+                <div class="card">
+
+                    <div class="details">
+
+                        <div class="left">
+
+                            <p class="name">Skanda</p>
+                            <div class="date_quality">
+                                <p class="quality">HD</p>
+                                <p class="date">2023</p>
+                            </div>
+                            <p class="category">Action/Romance</p>
+
+                            <div class="info">
+
+                                <div class="rate">
+                                    <i class="fa-solid fa-star"></i>
+                                    <p>8.2</p>
+                                </div>
+                                <div class="time">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>167min</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="right">
+
+                            <i class="fa-solid fa-play"></i>
+
+                        </div>
+
+                    </div>
+
+                    <img src="C:\Users\vilas dalvi\Desktop\tyb81\image\Skanda.jpg">
+
+                </div>
+
+                <div class="card">
+
+                    <div class="details">
+
+                        <div class="left">
+
+                            <p class="name">RRR</p>
+                            <div class="date_quality">
+                                <p class="quality">HD</p>
+                                <p class="date">2022</p>
+                            </div>
+                            <p class="category">Action/Thriller</p>
+
+                            <div class="info">
+
+                                <div class="rate">
+                                    <i class="fa-solid fa-star"></i>
+                                    <p>7.8</p>
+                                </div>
+                                <div class="time">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>182min</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="right">
+
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+
+                    </div>
+
+                    <img src="C:\Users\vilas dalvi\Desktop\tyb81\image\rrr.jpg">
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+   
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>

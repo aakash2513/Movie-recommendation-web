@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flicks&Tunes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+            body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-image:url("171717.png"); 
+    background-size: cover;
+}
+
+.login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8); /* Background color with transparency */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-top: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"],
+input[type="password"],
+button {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+    .search-container{
+  height: auto;
+  padding: 0 0 40px 0;
+  background-color: #171717;
+}
+
+.search-container h1{
+  text-align: center;
+  color: #ffe100;
+}
+
+.search-container .search-element{
+  max-width: 350px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.search-container .search-element input{
+  width: 550px;
+  height: 55px;
+  margin-top: 20px;
+  border-radius: 35px;
+  border: 3px solid #ffe100;
+  padding: 0 10px;
+  outline: none;
+  background: none;
+  color: #cccccc;
+}
+
+.search-container .search-element button{
+  position: absolute;
+  right: 0;
+  width: 100px;
+  height: 45px;
+  border-radius: 25px;
+  margin-top: 20px;
+  margin-right: 8px;
+  border: 0;
+  outline: none;
+  background-color: #ffe100;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+
+p.end{
+  background: #171717;
+  text-align: center;
+  color: #cccccc;
+  padding: 15px 0;
+}
+
+p.end span{
+  color: #ffe100;
+}
+
+p.end span i{
+  margin: 0 8px;
+}
+
+</style>    
+</head>
+<body>
+
+    <section>
+
+        <nav>
+
+            <div class="logo">
+                <h1>Flicks &<span>Tunes</span></h1>
+            </div>
+                <div class = "search-container">
+                    <div class = "search-element">
+                    <input type = "text"  class = "form-control" placeholder=" Enter Your Movie..." id = "movie-search-box" onkeyup="findMovies()" onclick = "findMovies()">
+                     </div>
+            </div>
+        </div>
+        
+
+            <div class="right">
+
+                <ul>
+
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Search</a></li>
+                    <li><a href="Movie.html">Movies</a></li>
+                    <li><a href="Categories.html">Categories</a></li>
+                    <li><a href="login.html">Login</a></li>
+
+                </ul>
+
+            </div>
+            
+
+        </nav>       
+         <!-- end of logo -->
+        <!-- search container -->
+        
+
+                <div class = "search-list" id = "search-list">
+             
+                    <div class = "search-list-item">
+                        <div class = "search-item-thumbnail">
+                        <div class = "search-item-info">
+                        </div>
+                    </div> 
+
+                    </div> 
+                    
+                
+        <!-- end of search container -->
+
+        
+
+        <!-- end of result container -->
+    </div>
+
+
+    <!-- movie app js -->
+    <script src = "script.js"></script>
+</body>
+</html>
